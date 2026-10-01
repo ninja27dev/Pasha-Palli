@@ -343,9 +343,11 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
   left: calc(var(--cell-size) * 8);
   width: calc(var(--cell-size) * 3);
   height: calc(var(--cell-size) * 3);
-  background-image: url('../Assets/ChauparBoardUI/Sprites/charkoni_center.png');
+  background-color: #2b1219;
+  background-image: url('assets/sprites/charkoni_center.png');
   background-size: cover;
   background-position: center;
+  border: 2px solid var(--border-gold-bright);
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   z-index: 5;
@@ -479,11 +481,15 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
 }
 
 .cell-tile.crimson {
-  background-image: url('../Assets/ChauparBoardUI/Sprites/cell_crimson.png');
+  background-color: #8c1726;
+  background-image: url('assets/sprites/cell_crimson.png');
+  border: 1px solid rgba(240, 195, 69, 0.28);
 }
 
 .cell-tile.emerald {
-  background-image: url('../Assets/ChauparBoardUI/Sprites/cell_emerald.png');
+  background-color: #175429;
+  background-image: url('assets/sprites/cell_emerald.png');
+  border: 1px solid rgba(240, 195, 69, 0.28);
 }
 
 .cell-tile:hover {
@@ -496,7 +502,7 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
   position: absolute;
   width: 82%;
   height: 82%;
-  background-image: url('../Assets/ChauparBoardUI/Sprites/mark_safe_x.png');
+  background-image: url('assets/sprites/mark_safe_x.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -509,7 +515,7 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url('../Assets/ChauparBoardUI/Sprites/cell_glow_highlight.png');
+  background-image: url('assets/sprites/cell_glow_highlight.png');
   background-size: cover;
   pointer-events: none;
   z-index: 4;
@@ -758,10 +764,26 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
   to { transform: scale(1.2); }
 }
 
-.pawn-token.p0 { background-image: url('../Assets/ChauparBoardUI/Sprites/pawn_red.png'); }
-.pawn-token.p1 { background-image: url('../Assets/ChauparBoardUI/Sprites/pawn_green.png'); }
-.pawn-token.p2 { background-image: url('../Assets/ChauparBoardUI/Sprites/pawn_yellow.png'); }
-.pawn-token.p3 { background-image: url('../Assets/ChauparBoardUI/Sprites/pawn_blue.png'); }
+.pawn-token.p0 { 
+  background-color: #d82538;
+  background-image: url('assets/sprites/pawn_red.png'); 
+  border-radius: 50%;
+}
+.pawn-token.p1 { 
+  background-color: #278d46;
+  background-image: url('assets/sprites/pawn_green.png'); 
+  border-radius: 50%;
+}
+.pawn-token.p2 { 
+  background-color: #e5b222;
+  background-image: url('assets/sprites/pawn_yellow.png'); 
+  border-radius: 50%;
+}
+.pawn-token.p3 { 
+  background-color: #227de5;
+  background-image: url('assets/sprites/pawn_blue.png'); 
+  border-radius: 50%;
+}
 
 /* Color-Blind Cultural Symbol Glyphs on Pawns */
 .pawn-sym-badge {
@@ -1029,12 +1051,12 @@ body.hide-symbols .pawn-sym-badge {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
-.pasa-face.face-1 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_1.png'); }
-.pasa-face.face-2 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_2.png'); }
-.pasa-face.face-3 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_3.png'); }
-.pasa-face.face-4 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_4.png'); }
-.pasa-face.face-5 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_5.png'); }
-.pasa-face.face-6 { background-image: url('../Assets/ChauparBoardUI/Sprites/pasa_face_6.png'); }
+.pasa-face.face-1 { background-image: url('assets/sprites/pasa_face_1.png'); }
+.pasa-face.face-2 { background-image: url('assets/sprites/pasa_face_2.png'); }
+.pasa-face.face-3 { background-image: url('assets/sprites/pasa_face_3.png'); }
+.pasa-face.face-4 { background-image: url('assets/sprites/pasa_face_4.png'); }
+.pasa-face.face-5 { background-image: url('assets/sprites/pasa_face_5.png'); }
+.pasa-face.face-6 { background-image: url('assets/sprites/pasa_face_6.png'); }
 
 /* Cowrie Shells Tray */
 .cowrie-tray {
@@ -1065,11 +1087,11 @@ body.hide-symbols .pawn-sym-badge {
 }
 
 .cowrie-shell.open {
-  background-image: url('../Assets/ChauparBoardUI/Sprites/cowrie_open.png');
+  background-image: url('assets/sprites/cowrie_open.png');
 }
 
 .cowrie-shell.closed {
-  background-image: url('../Assets/ChauparBoardUI/Sprites/cowrie_closed.png');
+  background-image: url('assets/sprites/cowrie_closed.png');
 }
 
 .cowrie-shell.rolling {

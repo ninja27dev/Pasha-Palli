@@ -3,7 +3,7 @@
 // Provides 100% offline capability, instant load & cache management for Android & Web
 // ============================================================================
 
-const CACHE_NAME = 'pasha-palli-v1.0.0';
+const CACHE_NAME = 'pasha-palli-v1.0.1';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -14,7 +14,24 @@ const ASSETS_TO_CACHE = [
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable.png',
-  './icons/favicon.png'
+  './icons/favicon.png',
+  './assets/sprites/cell_crimson.png',
+  './assets/sprites/cell_emerald.png',
+  './assets/sprites/charkoni_center.png',
+  './assets/sprites/mark_safe_x.png',
+  './assets/sprites/cell_glow_highlight.png',
+  './assets/sprites/pawn_red.png',
+  './assets/sprites/pawn_green.png',
+  './assets/sprites/pawn_yellow.png',
+  './assets/sprites/pawn_blue.png',
+  './assets/sprites/pasa_face_1.png',
+  './assets/sprites/pasa_face_2.png',
+  './assets/sprites/pasa_face_3.png',
+  './assets/sprites/pasa_face_4.png',
+  './assets/sprites/pasa_face_5.png',
+  './assets/sprites/pasa_face_6.png',
+  './assets/sprites/cowrie_open.png',
+  './assets/sprites/cowrie_closed.png'
 ];
 
 // Install: Pre-cache all core game assets
