@@ -7,7 +7,7 @@
     </radialGradient>
     
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff1a8"/>
+      <stop offset="0%" stop-color="#fff4b8"/>
       <stop offset="35%" stop-color="#f0c345"/>
       <stop offset="70%" stop-color="#c99320"/>
       <stop offset="100%" stop-color="#7a550d"/>
@@ -18,19 +18,24 @@
       <stop offset="100%" stop-color="#8b0000"/>
     </linearGradient>
 
-    <linearGradient id="diceFace1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff8e7"/>
-      <stop offset="100%" stop-color="#dfcfad"/>
+    <!-- Traditional Indian Ivory / Sandalwood Pasha Textures -->
+    <linearGradient id="pashaTopGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fffcf5"/>
+      <stop offset="45%" stop-color="#f5e8cf"/>
+      <stop offset="100%" stop-color="#dec49e"/>
     </linearGradient>
 
-    <linearGradient id="diceFace2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#d6be92"/>
-      <stop offset="100%" stop-color="#a48858"/>
+    <linearGradient id="pashaFrontGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#b8976a"/>
+      <stop offset="60%" stop-color="#8c6a3d"/>
+      <stop offset="100%" stop-color="#5a401f"/>
     </linearGradient>
 
-    <linearGradient id="diceFace3" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ba9b68"/>
-      <stop offset="100%" stop-color="#73572c"/>
+    <linearGradient id="pashaCapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe680"/>
+      <stop offset="40%" stop-color="#d4af37"/>
+      <stop offset="80%" stop-color="#996515"/>
+      <stop offset="100%" stop-color="#593b0c"/>
     </linearGradient>
 
     <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
@@ -38,8 +43,12 @@
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
 
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.8"/>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+
+    <filter id="pashaOverlapShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="-4" dy="8" stdDeviation="8" flood-color="#050208" flood-opacity="0.9"/>
     </filter>
   </defs>
 
@@ -73,43 +82,115 @@
 
   <!-- Four Color Quad Markers representing the 4 Indian Board Arms -->
   <g>
-    <!-- North: Yellow -->
+    <!-- North: Yellow Senapati -->
     <path d="M 240,112 L 272,112 L 256,134 Z" fill="#e5b222"/>
-    <!-- South: Crimson Red -->
+    <!-- South: Crimson Red Maharathi -->
     <path d="M 240,400 L 272,400 L 256,378 Z" fill="#d82538"/>
-    <!-- West: Emerald Green -->
+    <!-- West: Emerald Green Samrat -->
     <path d="M 112,240 L 112,272 L 134,256 Z" fill="#278d46"/>
-    <!-- East: Sapphire Blue -->
+    <!-- East: Sapphire Blue Yoddha -->
     <path d="M 400,240 L 400,272 L 378,256 Z" fill="#227de5"/>
   </g>
 
-  <!-- Isometric 3D Pasha / Ancient Indian Dice Group -->
-  <g transform="translate(256,238)" filter="url(#shadow)">
-    <!-- Top Face -->
-    <polygon points="0,-80 75,-38 0,4 -75,-38" fill="url(#diceFace1)" stroke="#5c441b" stroke-width="2"/>
-    <!-- Right Face -->
-    <polygon points="0,4 75,-38 75,54 0,96" fill="url(#diceFace2)" stroke="#5c441b" stroke-width="2"/>
-    <!-- Left Face -->
-    <polygon points="-75,-38 0,4 0,96 -75,54" fill="url(#diceFace3)" stroke="#5c441b" stroke-width="2"/>
+  <!-- ===================================================================== -->
+  <!-- TWO AUTHENTIC INDIAN PASHAS (TRADITIONAL ELONGATED 4-SIDED STICK DICE) -->
+  <!-- ===================================================================== -->
+  <g id="twoPashasContainer">
 
-    <!-- Pips / Dice Symbols: Traditional Indian Pasha Symbols & Dots -->
-    <!-- Top Face Pips (5 pips / Royal Center) -->
-    <circle cx="0" cy="-38" r="7" fill="#b01f2e"/>
-    <circle cx="-38" cy="-56" r="5.5" fill="#2a1f11"/>
-    <circle cx="38" cy="-56" r="5.5" fill="#2a1f11"/>
-    <circle cx="-38" cy="-20" r="5.5" fill="#2a1f11"/>
-    <circle cx="38" cy="-20" r="5.5" fill="#2a1f11"/>
+    <!-- PASHA 1 (Back Rod - Angled at -26 deg) -->
+    <g transform="translate(256, 235) rotate(-26)" filter="url(#shadow)">
+      <!-- Main Pasha Rod Body (Top Light Face) -->
+      <polygon points="-102,-14 102,-14 96,4 -96,4" fill="url(#pashaTopGrad)" stroke="#593b0c" stroke-width="1.5"/>
+      <!-- Main Pasha Rod Body (Front Shaded Face) -->
+      <polygon points="-96,4 96,4 96,18 -96,18" fill="url(#pashaFrontGrad)" stroke="#3a2507" stroke-width="1.5"/>
+      <!-- Longitudinal Bevel Highlight -->
+      <line x1="-95" y1="4" x2="95" y2="4" stroke="#fff4d4" stroke-width="1" opacity="0.75"/>
 
-    <!-- Left Face Pips (3 diagonal pips) -->
-    <circle cx="-48" cy="0" r="6" fill="#2a1f11"/>
-    <circle cx="-36" cy="28" r="6" fill="#2a1f11"/>
-    <circle cx="-24" cy="56" r="6" fill="#2a1f11"/>
+      <!-- Left End Cap (Carved Gold Ferrule) -->
+      <polygon points="-104,-15 -84,-15 -80,4 -100,4" fill="url(#pashaCapGrad)" stroke="#3a2507" stroke-width="1.2"/>
+      <polygon points="-100,4 -80,4 -80,19 -100,19" fill="url(#pashaCapGrad)" stroke="#2b1a04" stroke-width="1.2"/>
+      <!-- Left Tip Facet & Jewel -->
+      <polygon points="-104,-15 -100,4 -100,19 -106,0" fill="#7a550d" stroke="#2b1a04" stroke-width="1"/>
+      <circle cx="-103" cy="2" r="3" fill="#d82538" stroke="#ffe680" stroke-width="0.8"/>
 
-    <!-- Right Face Pips (4 corner pips) -->
-    <circle cx="28" cy="-6" r="6" fill="#2a1f11"/>
-    <circle cx="58" cy="10" r="6" fill="#2a1f11"/>
-    <circle cx="20" cy="38" r="6" fill="#2a1f11"/>
-    <circle cx="50" cy="54" r="6" fill="#2a1f11"/>
+      <!-- Right End Cap (Carved Gold Ferrule) -->
+      <polygon points="84,-15 104,-15 100,4 80,4" fill="url(#pashaCapGrad)" stroke="#3a2507" stroke-width="1.2"/>
+      <polygon points="80,4 100,4 100,19 80,19" fill="url(#pashaCapGrad)" stroke="#2b1a04" stroke-width="1.2"/>
+      <!-- Right Tip Facet & Jewel -->
+      <polygon points="104,-15 100,4 100,19 106,0" fill="#ffe680" stroke="#2b1a04" stroke-width="1"/>
+      <circle cx="103" cy="2" r="3" fill="#d82538" stroke="#ffe680" stroke-width="0.8"/>
+
+      <!-- Pips on Pasha 1 (Traditional Concentric Circle Markings: 4 Pips) -->
+      <!-- Pip 1 at x = -58 -->
+      <g transform="translate(-58, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+      <!-- Pip 2 at x = -22 -->
+      <g transform="translate(-22, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+      <!-- Pip 3 at x = +22 -->
+      <g transform="translate(22, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+      <!-- Pip 4 at x = +58 -->
+      <g transform="translate(58, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+    </g>
+
+    <!-- PASHA 2 (Front Rod - Angled at +26 deg, overlapping in 3D) -->
+    <g transform="translate(256, 235) rotate(26)" filter="url(#pashaOverlapShadow)">
+      <!-- Main Pasha Rod Body (Top Light Face) -->
+      <polygon points="-102,-14 102,-14 96,4 -96,4" fill="url(#pashaTopGrad)" stroke="#593b0c" stroke-width="1.5"/>
+      <!-- Main Pasha Rod Body (Front Shaded Face) -->
+      <polygon points="-96,4 96,4 96,18 -96,18" fill="url(#pashaFrontGrad)" stroke="#3a2507" stroke-width="1.5"/>
+      <!-- Longitudinal Bevel Highlight -->
+      <line x1="-95" y1="4" x2="95" y2="4" stroke="#fff4d4" stroke-width="1" opacity="0.75"/>
+
+      <!-- Left End Cap (Carved Gold Ferrule) -->
+      <polygon points="-104,-15 -84,-15 -80,4 -100,4" fill="url(#pashaCapGrad)" stroke="#3a2507" stroke-width="1.2"/>
+      <polygon points="-100,4 -80,4 -80,19 -100,19" fill="url(#pashaCapGrad)" stroke="#2b1a04" stroke-width="1.2"/>
+      <!-- Left Tip Facet & Jewel -->
+      <polygon points="-104,-15 -100,4 -100,19 -106,0" fill="#7a550d" stroke="#2b1a04" stroke-width="1"/>
+      <circle cx="-103" cy="2" r="3" fill="#227de5" stroke="#ffe680" stroke-width="0.8"/>
+
+      <!-- Right End Cap (Carved Gold Ferrule) -->
+      <polygon points="84,-15 104,-15 100,4 80,4" fill="url(#pashaCapGrad)" stroke="#3a2507" stroke-width="1.2"/>
+      <polygon points="80,4 100,4 100,19 80,19" fill="url(#pashaCapGrad)" stroke="#2b1a04" stroke-width="1.2"/>
+      <!-- Right Tip Facet & Jewel -->
+      <polygon points="104,-15 100,4 100,19 106,0" fill="#ffe680" stroke="#2b1a04" stroke-width="1"/>
+      <circle cx="103" cy="2" r="3" fill="#227de5" stroke="#ffe680" stroke-width="0.8"/>
+
+      <!-- Pips on Pasha 2 (Traditional Concentric Circle Markings: 3 Pips) -->
+      <!-- Pip 1 at x = -48 -->
+      <g transform="translate(-48, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+      <!-- Pip 2 at Center x = 0 (Royal Focal Point) -->
+      <g transform="translate(0, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="7" fill="none" stroke="#f0c345" stroke-width="1.6"/>
+        <circle cx="0" cy="0" r="4.5" fill="none" stroke="#d82538" stroke-width="1.3"/>
+        <circle cx="0" cy="0" r="2.2" fill="#227de5"/>
+      </g>
+      <!-- Pip 3 at x = +48 -->
+      <g transform="translate(48, -5) scale(1, 0.75)">
+        <circle cx="0" cy="0" r="6" fill="none" stroke="#996515" stroke-width="1.4"/>
+        <circle cx="0" cy="0" r="3.8" fill="none" stroke="#d82538" stroke-width="1.2"/>
+        <circle cx="0" cy="0" r="1.8" fill="#1b1026"/>
+      </g>
+    </g>
+
   </g>
 
   <!-- Royal Banner Ribbon & Typography -->
