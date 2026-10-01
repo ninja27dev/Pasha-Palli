@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3b1d4a"/>
+      <stop offset="60%" stop-color="#180e22"/>
+      <stop offset="100%" stop-color="#0a060e"/>
+    </radialGradient>
+    
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff1a8"/>
+      <stop offset="35%" stop-color="#f0c345"/>
+      <stop offset="70%" stop-color="#c99320"/>
+      <stop offset="100%" stop-color="#7a550d"/>
+    </linearGradient>
+
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4757"/>
+      <stop offset="100%" stop-color="#8b0000"/>
+    </linearGradient>
+
+    <linearGradient id="diceFace1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff8e7"/>
+      <stop offset="100%" stop-color="#dfcfad"/>
+    </linearGradient>
+
+    <linearGradient id="diceFace2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d6be92"/>
+      <stop offset="100%" stop-color="#a48858"/>
+    </linearGradient>
+
+    <linearGradient id="diceFace3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ba9b68"/>
+      <stop offset="100%" stop-color="#73572c"/>
+    </linearGradient>
+
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGlow)"/>
+  
+  <!-- Outer Ornate Mandala Ring -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#goldGrad)" stroke-width="3" stroke-dasharray="12 6" opacity="0.6"/>
+  <circle cx="256" cy="256" r="226" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- Mandala Radiating Star Petals (Traditional 8-fold Indian Motif) -->
+  <g stroke="url(#goldGrad)" stroke-width="2" fill="none" opacity="0.75" filter="url(#goldGlow)">
+    <polygon points="256,40 268,100 328,100 280,140 298,200 256,165 214,200 232,140 184,100 244,100"/>
+    <polygon points="256,472 268,412 328,412 280,372 298,312 256,347 214,312 232,372 184,412 244,412"/>
+    <polygon points="40,256 100,268 100,328 140,280 200,298 165,256 200,214 140,232 100,184 100,244"/>
+    <polygon points="472,256 412,268 412,328 372,280 312,298 347,256 312,214 372,232 412,184 412,244"/>
+  </g>
+
+  <!-- Corner Lotus / Paisley Flourishes -->
+  <g fill="url(#goldGrad)" opacity="0.6">
+    <circle cx="80" cy="80" r="8"/>
+    <circle cx="432" cy="80" r="8"/>
+    <circle cx="80" cy="432" r="8"/>
+    <circle cx="432" cy="432" r="8"/>
+  </g>
+
+  <!-- Central Shield Medallion -->
+  <circle cx="256" cy="256" r="160" fill="#1b1026" stroke="url(#goldGrad)" stroke-width="6" filter="url(#shadow)"/>
+  <circle cx="256" cy="256" r="150" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="8 4" opacity="0.8"/>
+
+  <!-- Four Color Quad Markers representing the 4 Indian Board Arms -->
+  <g>
+    <!-- North: Yellow -->
+    <path d="M 240,112 L 272,112 L 256,134 Z" fill="#e5b222"/>
+    <!-- South: Crimson Red -->
+    <path d="M 240,400 L 272,400 L 256,378 Z" fill="#d82538"/>
+    <!-- West: Emerald Green -->
+    <path d="M 112,240 L 112,272 L 134,256 Z" fill="#278d46"/>
+    <!-- East: Sapphire Blue -->
+    <path d="M 400,240 L 400,272 L 378,256 Z" fill="#227de5"/>
+  </g>
+
+  <!-- Isometric 3D Pasha / Ancient Indian Dice Group -->
+  <g transform="translate(256,238)" filter="url(#shadow)">
+    <!-- Top Face -->
+    <polygon points="0,-80 75,-38 0,4 -75,-38" fill="url(#diceFace1)" stroke="#5c441b" stroke-width="2"/>
+    <!-- Right Face -->
+    <polygon points="0,4 75,-38 75,54 0,96" fill="url(#diceFace2)" stroke="#5c441b" stroke-width="2"/>
+    <!-- Left Face -->
+    <polygon points="-75,-38 0,4 0,96 -75,54" fill="url(#diceFace3)" stroke="#5c441b" stroke-width="2"/>
+
+    <!-- Pips / Dice Symbols: Traditional Indian Pasha Symbols & Dots -->
+    <!-- Top Face Pips (5 pips / Royal Center) -->
+    <circle cx="0" cy="-38" r="7" fill="#b01f2e"/>
+    <circle cx="-38" cy="-56" r="5.5" fill="#2a1f11"/>
+    <circle cx="38" cy="-56" r="5.5" fill="#2a1f11"/>
+    <circle cx="-38" cy="-20" r="5.5" fill="#2a1f11"/>
+    <circle cx="38" cy="-20" r="5.5" fill="#2a1f11"/>
+
+    <!-- Left Face Pips (3 diagonal pips) -->
+    <circle cx="-48" cy="0" r="6" fill="#2a1f11"/>
+    <circle cx="-36" cy="28" r="6" fill="#2a1f11"/>
+    <circle cx="-24" cy="56" r="6" fill="#2a1f11"/>
+
+    <!-- Right Face Pips (4 corner pips) -->
+    <circle cx="28" cy="-6" r="6" fill="#2a1f11"/>
+    <circle cx="58" cy="10" r="6" fill="#2a1f11"/>
+    <circle cx="20" cy="38" r="6" fill="#2a1f11"/>
+    <circle cx="50" cy="54" r="6" fill="#2a1f11"/>
+  </g>
+
+  <!-- Royal Banner Ribbon & Typography -->
+  <g transform="translate(0, 396)">
+    <!-- Banner Shadow & Backdrop -->
+    <path d="M 100,28 L 130,50 L 100,72 L 412,72 L 382,50 L 412,28 Z" fill="#4d161d" opacity="0.8"/>
+    <rect x="120" y="24" width="272" height="48" rx="8" fill="url(#redGrad)" stroke="url(#goldGrad)" stroke-width="3" filter="url(#shadow)"/>
+    
+    <!-- Title Text -->
+    <text x="256" y="56" font-family="'Cinzel', 'Outfit', 'Georgia', serif" font-weight="900" font-size="24" fill="#ffffff" text-anchor="middle" letter-spacing="3.5" filter="url(#goldGlow)">
+      PASHA PALLI
+    </text>
+  </g>
+</svg>

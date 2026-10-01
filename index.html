@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Pasha Palli: Dice-Pit Cross Race — Native & Indigenous Sports of India</title>
+  <meta name="description" content="Pasha Palli - Authentic ancient Indian cross-and-circle dice race game.">
+  <meta name="author" content="Devesh Das">
+  <meta name="copyright" content="All Rights Reserved under Devesh Das">
+  <meta name="theme-color" content="#0f0d12">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- Android & iOS Web App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pasha Palli">
+  <meta name="application-name" content="Pasha Palli">
+
+  <!-- Icons & PWA Manifest -->
+  <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ===================================================================== -->
+  <!-- FULLY FUNCTIONAL CINEMATIC LOAD SCREEN / TITLE SPLASH (§7 SPECIFICATION) -->
+  <!-- ===================================================================== -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-backdrop"></div>
+    <div class="loading-container">
+      <!-- Royal Mandala & Insignia -->
+      <div class="loading-mandala-wrap">
+        <div class="mandala-ring outer"></div>
+        <div class="mandala-ring inner"></div>
+        <div class="loading-seal">
+          <span class="seal-icon">⚜</span>
+        </div>
+      </div>
+
+      <!-- Title & Cultural Heritage Header -->
+      <div class="loading-titles">
+        <h1 class="loading-title">PASHA PALLI</h1>
+        <p class="loading-tagline">The Ancient Epic Dice-Pit Cross Race</p>
+      </div>
+
+      <!-- Loading Progress & Stage Bar -->
+      <div id="loadingProgressGroup" class="loading-progress-group">
+        <div class="progress-info-row">
+          <span id="loadingStatusText" class="loading-status-text">Booting Pasha Palli Engine...</span>
+          <span id="loadingPercentText" class="loading-percent-text">0%</span>
+        </div>
+        <div class="loading-bar-track">
+          <div id="loadingBarFill" class="loading-bar-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Action Gate & Player Choice (Revealed at 100% before match begins) -->
+      <div id="loadingGateGroup" class="loading-gate-group hidden">
+        <div class="start-choice-card simplified">
+          <!-- 1. MATCH MODE SELECTOR -->
+          <div class="choice-section">
+            <div class="section-title-tag">SELECT MATCH MODE</div>
+            <div class="mode-cards-row" id="splashModeCards">
+              <button type="button" class="mode-card selected" data-preset="1h3ai">
+                <span class="mode-icon">👤</span>
+                <div class="mode-text-wrap">
+                  <span class="mode-name">1 Human vs 3 AI</span>
+                  <span class="mode-sub">Solo Campaign</span>
+                </div>
+              </button>
+              <button type="button" class="mode-card" data-preset="1h1h">
+                <span class="mode-icon">⚔️</span>
+                <div class="mode-text-wrap">
+                  <span class="mode-name">1v1 Duel</span>
+                  <span class="mode-sub">2 Humans Pass & Play</span>
+                </div>
+              </button>
+              <button type="button" class="mode-card" data-preset="4human">
+                <span class="mode-icon">👑</span>
+                <div class="mode-text-wrap">
+                  <span class="mode-name">4 Humans</span>
+                  <span class="mode-sub">Full Pass & Play</span>
+                </div>
+              </button>
+              <button type="button" class="mode-card" data-preset="4ai">
+                <span class="mode-icon">🤖</span>
+                <div class="mode-text-wrap">
+                  <span class="mode-name">AI Spectate</span>
+                  <span class="mode-sub">Watch Bots Duel</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Optional More Matchups Selector -->
+            <div class="more-modes-inline">
+              <span class="more-modes-label">Other Variations:</span>
+              <select id="splashMoreModesSelect" class="more-modes-select">
+                <option value="" selected>More Modes (2H vs 2AI, 3-Player, etc.)...</option>
+                <option value="2h2ai">2 Humans vs 2 AI (4 Players)</option>
+                <option value="3h1ai">3 Humans vs 1 AI (4 Players)</option>
+                <option value="1h1ai">1 Human vs 1 AI (2 Players Duel)</option>
+                <option value="1h2ai">1 Human vs 2 AI (3 Players)</option>
+                <option value="3human">3 Humans (Pass & Play • 3 Players)</option>
+                <option value="2h1ai">2 Humans vs 1 AI (3 Players)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 2. CHOOSE YOUR CHAMPION (COLOR, NAME, TITLE, AVATAR) -->
+          <div class="choice-section champion-section" id="championSection">
+            <div class="section-title-tag">CHOOSE YOUR COLOR & PROFILE</div>
+
+            <!-- 4 Grand Color Orbs -->
+            <div class="color-select-container">
+              <span class="field-label-small">Pick Your Royal Arm & Color:</span>
+              <div class="color-orbs-group" id="splashColorOrbs">
+                <button type="button" class="color-orb-btn selected" data-player-id="0" data-color="#d82538">
+                  <span class="orb-disc" style="background: radial-gradient(circle at 35% 35%, #ff5264, #b01022);">
+                    <span class="orb-symbol" id="orbSym_0">☀️</span>
+                  </span>
+                  <span class="orb-info">
+                    <span class="orb-color-title">Crimson Red</span>
+                    <span class="orb-direction">South Quadrant</span>
+                  </span>
+                  <span class="orb-active-badge">ACTIVE</span>
+                </button>
+
+                <button type="button" class="color-orb-btn" data-player-id="1" data-color="#278d46">
+                  <span class="orb-disc" style="background: radial-gradient(circle at 35% 35%, #44d46e, #1a6d34);">
+                    <span class="orb-symbol" id="orbSym_1">🪷</span>
+                  </span>
+                  <span class="orb-info">
+                    <span class="orb-color-title">Emerald Green</span>
+                    <span class="orb-direction">West Quadrant</span>
+                  </span>
+                  <span class="orb-active-badge">ACTIVE</span>
+                </button>
+
+                <button type="button" class="color-orb-btn" data-player-id="2" data-color="#e5b222">
+                  <span class="orb-disc" style="background: radial-gradient(circle at 35% 35%, #ffdb58, #b5880a); color:#17111d;">
+                    <span class="orb-symbol" id="orbSym_2">🌙</span>
+                  </span>
+                  <span class="orb-info">
+                    <span class="orb-color-title">Golden Yellow</span>
+                    <span class="orb-direction">North Quadrant</span>
+                  </span>
+                  <span class="orb-active-badge">ACTIVE</span>
+                </button>
+
+                <button type="button" class="color-orb-btn" data-player-id="3" data-color="#227de5">
+                  <span class="orb-disc" style="background: radial-gradient(circle at 35% 35%, #59a6ff, #1158b0);">
+                    <span class="orb-symbol" id="orbSym_3">⚡</span>
+                  </span>
+                  <span class="orb-info">
+                    <span class="orb-color-title">Sapphire Blue</span>
+                    <span class="orb-direction">East Quadrant</span>
+                  </span>
+                  <span class="orb-active-badge">ACTIVE</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Name, Title, and Avatar Row -->
+            <div class="champion-fields-row">
+              <!-- Name & Title Field -->
+              <div class="champ-subfield name-field-wrap">
+                <label class="field-label-small" for="splashPlayerName">Player Name & Title:</label>
+                <div class="champ-input-combo">
+                  <input type="text" id="splashPlayerName" class="champ-input" value="Devesh" maxlength="18" placeholder="Enter player name...">
+                  <select id="splashPlayerTitle" class="champ-select">
+                    <option value="Maharathi">Maharathi</option>
+                    <option value="Samrat">Samrat</option>
+                    <option value="Senapati">Senapati</option>
+                    <option value="Yoddha">Yoddha</option>
+                    <option value="Raja">Raja</option>
+                    <option value="Pasha Master">Pasha Master</option>
+                    <option value="Grandmaster">Grandmaster</option>
+                    <option value="Champion">Champion</option>
+                  </select>
+                </div>
+                <!-- Preset Names -->
+                <div class="champ-presets" id="splashNamePresets">
+                  <button type="button" class="preset-name-pill" data-name="Devesh">Devesh</button>
+                  <button type="button" class="preset-name-pill" data-name="Arjuna">Arjuna</button>
+                  <button type="button" class="preset-name-pill" data-name="Vikramaditya">Vikramaditya</button>
+                  <button type="button" class="preset-name-pill" data-name="Karna">Karna</button>
+                  <button type="button" class="preset-name-pill" data-name="Ashoka">Ashoka</button>
+                </div>
+              </div>
+
+              <!-- Avatar Symbol Picker -->
+              <div class="champ-subfield avatar-field-wrap">
+                <label class="field-label-small">Token Avatar Symbol:</label>
+                <div class="champ-avatar-picker" id="splashAvatarRow">
+                  <button type="button" class="champ-sym-btn selected" data-sym="☀️">☀️</button>
+                  <button type="button" class="champ-sym-btn" data-sym="🪷">🪷</button>
+                  <button type="button" class="champ-sym-btn" data-sym="🌙">🌙</button>
+                  <button type="button" class="champ-sym-btn" data-sym="⚡">⚡</button>
+                  <button type="button" class="champ-sym-btn" data-sym="👑">👑</button>
+                  <button type="button" class="champ-sym-btn" data-sym="🏹">🏹</button>
+                  <button type="button" class="champ-sym-btn" data-sym="🦁">🦁</button>
+                  <button type="button" class="champ-sym-btn" data-sym="⚔️">⚔️</button>
+                  <button type="button" class="champ-sym-btn" data-sym="🎲">🎲</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. QUICK MODIFIERS (Dice & AI Skill) -->
+          <div class="splash-modifiers-row">
+            <div class="splash-mod-group">
+              <span class="splash-mod-label">🎲 Dice:</span>
+              <div class="splash-mod-pills" id="splashDicePills">
+                <button type="button" class="splash-mod-pill active" data-dice="pasa">Pasa Sticks</button>
+                <button type="button" class="splash-mod-pill" data-dice="cowrie">Cowrie Shells</button>
+              </div>
+            </div>
+            <div class="splash-mod-group">
+              <span class="splash-mod-label">🧠 AI Skill:</span>
+              <div class="splash-mod-pills" id="splashAiPills">
+                <button type="button" class="splash-mod-pill" data-ai="easy">Apprentice</button>
+                <button type="button" class="splash-mod-pill active" data-ai="medium">Master</button>
+                <button type="button" class="splash-mod-pill" data-ai="hard">Royal</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. BIG ENTER ACTION -->
+          <div class="start-action-row">
+            <button id="btnEnterGame" class="btn-enter-game">
+              <span class="btn-enter-icon">▶</span>
+              <span id="btnEnterText">START MATCH</span>
+            </button>
+          </div>
+
+          <!-- 5. COPYRIGHT NOTICE -->
+          <div class="loading-copyright">
+            <span class="copy-seal">⚜</span>
+            <span>All Rights Reserved under Devesh Das</span>
+            <span class="copy-seal">⚜</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audio & Input Gesture Tip -->
+      <div class="loading-footer-tip">
+        <span>Click or tap to initialize high-fidelity Web Audio & begin court match</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Top Header Navigation -->
+    <header class="top-nav">
+      <div class="logo-group">
+        <span class="gold-icon" aria-hidden="true">⚜</span>
+        <div class="title-wrap">
+          <h1 id="appTitle">PASHA PALLI</h1>
+        </div>
+      </div>
+
+      <!-- Action & View Modals Toolbar -->
+      <div class="header-actions">
+        <button id="btnOpenTitleScreen" class="btn-nav" title="Title & Load Screen">
+          <span class="btn-icon">🏰</span> <span>Title Screen</span>
+        </button>
+        <button id="btnOpenProfiles" class="btn-nav" title="Player Profiles & Names">
+          <span class="btn-icon">👤</span> <span data-i18n="player_profiles">Player Profiles</span>
+        </button>
+        <button id="btnOpenSetup" class="btn-nav" title="Match Setup & AI Difficulty">
+          <span class="btn-icon">⚙️</span> <span data-i18n="match_setup">Match Setup</span>
+        </button>
+        <button id="btnOpenRules" class="btn-nav" title="How to Play & Mahabharata Origin">
+          <span class="btn-icon">📜</span> <span data-i18n="how_to_play">How to Play</span>
+        </button>
+        <button id="btnOpenSettings" class="btn-nav" title="Settings & Accessibility">
+          <span class="btn-icon">🎨</span> <span data-i18n="settings">Settings</span>
+        </button>
+        <button id="btnThemeToggle" class="btn-nav" title="Switch Theme (Light / Dark Mode)">
+          <span id="themeToggleIcon">☀️</span> <span id="themeToggleText">Light Mode</span>
+        </button>
+        <button id="btnSoundToggle" class="btn-nav btn-icon-only" title="Toggle Sound (Mute/Unmute)">
+          <span id="soundIcon">🔊</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Match Status Bar / FSM State Tracker -->
+    <div class="fsm-status-bar">
+      <div class="fsm-badge-group">
+        <span class="mode-pill" id="hudModeBadge">Vs AI (Medium)</span>
+        <span class="state-pill" id="hudStateBadge">STATE: ROLL PASAS</span>
+      </div>
+      <div class="quick-hints" id="hudQuickHint">
+        <span>🖱️ Mouse: Click to Roll & Move | ⌨️ Keyboard: <kbd>Space</kbd> Roll, <kbd>1</kbd>–<kbd>4</kbd> Pick, <kbd>Enter</kbd> Confirm</span>
+      </div>
+      <div class="hud-quick-tools">
+        <button id="btnQuickHint" class="btn-hint" title="AI Strategic Hint (H)">💡 <span data-i18n="hint">Hint</span></button>
+        <button id="btnQuickUndo" class="btn-undo" title="Casual Move Undo (U)" disabled>↩ <span data-i18n="undo">Undo</span></button>
+        <button id="btnQuickPause" class="btn-pause" title="Pause Game (Esc)">⏸ <span data-i18n="pause">Pause</span></button>
+      </div>
+    </div>
+
+    <!-- Main Game Workspace -->
+    <main class="main-content">
+      <!-- Left: Interactive 2D Canvas Board Viewport -->
+      <div class="board-viewport" id="viewport">
+        <!-- Move Preview Floating Banner -->
+        <div id="previewCallout" class="preview-callout hidden">
+          <div class="preview-title" id="previewTitle">Move Preview</div>
+          <div class="preview-text" id="previewText">Select a Gotti to view destination</div>
+          <div class="preview-actions">
+            <button id="btnConfirmMove" class="btn-confirm-move">✓ <span data-i18n="confirm_move">Confirm Move</span></button>
+            <button id="btnCancelMove" class="btn-cancel-move">✕ <span data-i18n="cancel">Cancel</span></button>
+          </div>
+        </div>
+
+        <div id="boardRoot" class="board-root">
+          <!-- Central 'C' (Charkoni / Home Goal) Square -->
+          <div id="centerCharkoni" class="charkoni-center" title="Charkoni Center (Home Goal)">
+            <div class="charkoni-label">
+              <span class="home-icon">👑</span>
+              <span class="home-title">HOME</span>
+              <span class="home-badge">‘C’</span>
+            </div>
+            <div id="charkoniPawns" class="cell-pawns"></div>
+          </div>
+
+          <!-- 4 Checkered Arms (North, East, South, West) -->
+          <div id="armNorth" class="board-arm arm-north" data-arm="0"></div>
+          <div id="armEast" class="board-arm arm-east" data-arm="1"></div>
+          <div id="armSouth" class="board-arm arm-south" data-arm="2"></div>
+          <div id="armWest" class="board-arm arm-west" data-arm="3"></div>
+
+          <!-- 4 Designated Corner Starting Docks (Rule 2 from Book) -->
+          <div id="startDockP2" class="start-dock dock-north" data-player="2" title="Player 3 (Golden Yellow) Starting Base">
+            <div class="dock-badge yellow"><span class="sym">🌙</span> <span>North</span></div>
+            <div class="dock-pawns-wrap" id="dockPawns2"></div>
+          </div>
+          <div id="startDockP3" class="start-dock dock-east" data-player="3" title="Player 4 (Sapphire Blue) Starting Base">
+            <div class="dock-badge blue"><span class="sym">⚡</span> <span>East</span></div>
+            <div class="dock-pawns-wrap" id="dockPawns3"></div>
+          </div>
+          <div id="startDockP0" class="start-dock dock-south" data-player="0" title="Player 1 (Crimson Red) Starting Base">
+            <div class="dock-badge red"><span class="sym">☀️</span> <span>South</span></div>
+            <div class="dock-pawns-wrap" id="dockPawns0"></div>
+          </div>
+          <div id="startDockP1" class="start-dock dock-west" data-player="1" title="Player 2 (Emerald Green) Starting Base">
+            <div class="dock-badge green"><span class="sym">🪷</span> <span>West</span></div>
+            <div class="dock-pawns-wrap" id="dockPawns1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Game Controls & HUD Sidebar -->
+      <aside class="hud-panel">
+        <!-- Active Turn Card -->
+        <div class="hud-card turn-card" id="turnCard">
+          <div class="turn-header">
+            <div id="playerColorBadge" class="player-badge">
+              <span id="playerSymbolBadge" class="player-sym">☀️</span>
+            </div>
+            <div class="turn-player-info">
+              <div class="turn-eyebrow-row">
+                <span class="eyebrow" data-i18n="current_turn">CURRENT TURN</span>
+                <button id="btnEditTurnProfile" class="btn-mini-edit" title="Edit Active Player Profile">✏️ Edit</button>
+              </div>
+              <h2 id="currentPlayerName">Player 1 (Crimson Red)</h2>
+              <div class="turn-badges-row">
+                <span class="player-title-badge" id="playerTitleBadge">Maharathi</span>
+                <span class="player-type-label" id="playerTypeLabel">Human (You)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Score & Progress Tray -->
+          <div class="score-pills">
+            <div class="pill" title="Tokens in Base Dock">
+              <span data-i18n="in_dock">Dock:</span> <b id="statDock">4/4</b>
+            </div>
+            <div class="pill" title="Tokens Active on Board">
+              <span data-i18n="on_track">Track:</span> <b id="statTrack">0/4</b>
+            </div>
+            <div class="pill" title="Tokens Finished in Central Home">
+              <span data-i18n="home">Home:</span> <b id="statHome">0/4</b>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dice Roller Card (Pasa Stick Dice & Cowries) -->
+        <div class="hud-card roller-card">
+          <div class="card-label-row">
+            <span class="card-label" id="diceTrayTitle">TRADITIONAL PASAS (STICK DICE)</span>
+            <span class="dice-type-tag" id="diceTypeTag">2 Pasas</span>
+          </div>
+
+          <!-- Pasa Dice Display Tray -->
+          <div id="pasaDisplay" class="pasa-tray">
+            <div class="pasa-die" id="pasa1" data-val="6">
+              <div class="pasa-face face-6"></div>
+            </div>
+            <div class="pasa-die" id="pasa2" data-val="4">
+              <div class="pasa-face face-4"></div>
+            </div>
+          </div>
+
+          <!-- Cowrie Shells Display Tray (Alternative Mode) -->
+          <div id="cowrieDisplay" class="cowrie-tray hidden">
+            <div class="cowrie-shell open" id="cowrie0"></div>
+            <div class="cowrie-shell closed" id="cowrie1"></div>
+            <div class="cowrie-shell open" id="cowrie2"></div>
+            <div class="cowrie-shell closed" id="cowrie3"></div>
+          </div>
+
+          <!-- Roll Result Display -->
+          <div class="roll-result-box">
+            <div class="result-number" id="rollValueDisplay">-</div>
+            <div class="result-desc" id="rollNameDisplay">Throw the Pasas to begin!</div>
+          </div>
+
+          <!-- Primary Throw Button -->
+          <button id="btnRoll" class="btn-primary-roll">
+            <span class="roll-icon">🎲</span> <span data-i18n="throw_pasas">THROW PASAS</span>
+          </button>
+        </div>
+
+        <!-- Opponents Summary List -->
+        <div class="hud-card opponents-card">
+          <div class="card-label" data-i18n="match_participants">PARTICIPANTS & STATUS</div>
+          <div class="opponents-list" id="opponentsList">
+            <!-- Dynamically populated in JS -->
+          </div>
+        </div>
+
+        <!-- Gameplay Event Log -->
+        <div class="hud-card log-card">
+          <div class="card-label-row">
+            <span class="card-label" data-i18n="event_log">GAMEPLAY EVENT LOG</span>
+            <button id="btnClearLog" class="btn-subtle" title="Clear log">Clear</button>
+          </div>
+          <div id="eventLog" class="event-log">
+            <p class="log-entry sys">Welcome to Pasha Palli.</p>
+            <p class="log-entry sys">Rules: Enter on 1, 6, or Doubles. Yellow 'X' cells are safe castles.</p>
+          </div>
+        </div>
+
+        <!-- Bottom Reset & Controls -->
+        <div class="hud-bottom-controls">
+          <button id="btnRestart" class="btn-reset" title="Restart Game Match">↺ <span data-i18n="reset_board">Reset Board</span></button>
+          <button id="btnOpenSetupBottom" class="btn-secondary">⚙️ <span data-i18n="options">Options</span></button>
+        </div>
+
+        <!-- Copyright Reserved Notice -->
+        <div class="hud-copyright-tag">
+          <span>⚜ All Rights Reserved under Devesh Das ⚜</span>
+        </div>
+      </aside>
+    </main>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: MATCH SETUP & GAME MODES -->
+    <!-- ===================================================================== -->
+    <div id="setupModal" class="modal-overlay hidden">
+      <div class="modal-content modal-large">
+        <div class="modal-header">
+          <h2><span class="gold-icon">⚙️</span> <span data-i18n="match_setup_title">Pasha Palli Match Setup</span></h2>
+          <button class="btn-close" data-close="setupModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="setup-grid">
+            <!-- Mode Selection -->
+            <div class="setup-field">
+              <label class="setup-label" data-i18n="game_mode">Game Mode:</label>
+              <div class="radio-pill-group" id="modeSelector">
+                <label class="radio-pill">
+                  <input type="radio" name="gameMode" value="vsAI" checked>
+                  <span>Vs AI (Solo)</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="gameMode" value="passPlay">
+                  <span>Pass & Play</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="gameMode" value="spectate">
+                  <span>AI Spectate</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Player Count -->
+            <div class="setup-field">
+              <label class="setup-label" data-i18n="player_count">Player Count:</label>
+              <div class="radio-pill-group" id="playerCountSelector">
+                <label class="radio-pill">
+                  <input type="radio" name="playerCount" value="2">
+                  <span>2 Players (Duel: South vs North)</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="playerCount" value="3">
+                  <span>3 Players</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="playerCount" value="4" checked>
+                  <span>4 Players (Full Royal Cross)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Player Profiles & Roster Section -->
+            <div class="setup-field">
+              <div class="setup-label-row">
+                <label class="setup-label" data-i18n="player_profiles">Player Profiles & Custom Names:</label>
+                <button type="button" id="btnOpenProfilesFromSetup" class="btn-subtle-gold">👤 Edit Profiles & Personas</button>
+              </div>
+              <div class="setup-roster-preview" id="setupRosterPreview">
+                <!-- Dynamically populated in preview.js -->
+              </div>
+              <p class="field-hint">Customize player names, epic royal titles, avatars, and controller options (Human vs AI playstyles).</p>
+            </div>
+
+            <!-- AI Difficulty Tier -->
+            <div class="setup-field" id="aiDiffSection">
+              <label class="setup-label" data-i18n="ai_difficulty">AI Difficulty Tier (§5 of Specification):</label>
+              <div class="radio-pill-group" id="aiDiffSelector">
+                <label class="radio-pill">
+                  <input type="radio" name="aiDiff" value="easy">
+                  <span>Easy (Greedy)</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="aiDiff" value="medium" checked>
+                  <span>Medium (Heuristic Policy)</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="aiDiff" value="hard">
+                  <span>Hard (1-Ply Expectiminimax)</span>
+                </label>
+              </div>
+              <p class="field-hint" id="aiDiffHint">Medium: Evaluates capture > safety > progress > release with balanced weights.</p>
+            </div>
+
+            <!-- Dice Mechanism -->
+            <div class="setup-field">
+              <label class="setup-label" data-i18n="dice_model">Dice Throw Model (§4 & §6):</label>
+              <div class="radio-pill-group" id="diceModelSelector">
+                <label class="radio-pill">
+                  <input type="radio" name="diceModel" value="pasa" checked>
+                  <span>Traditional Pasas (Long Rectangular Stick Dice)</span>
+                </label>
+                <label class="radio-pill">
+                  <input type="radio" name="diceModel" value="cowrie">
+                  <span>Cowrie Shells (Kauri 4-shell toss)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Entry Rule Variant -->
+            <div class="setup-field">
+              <label class="setup-label" data-i18n="entry_rule">Board Entry Rule (§2 Canonical Rules):</label>
+              <label class="toggle-control">
+                <input type="checkbox" id="chkStrictEntryModal" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">Strict Entry (Requires 1, 6, or Doubles to bring pawn from dock)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="modal-footer-actions">
+            <button id="btnApplySetup" class="btn-primary-action"><span data-i18n="apply_and_start">Start Match with Settings</span></button>
+            <button class="btn-secondary" data-close="setupModal"><span data-i18n="close">Close</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: HOW TO PLAY & HISTORICAL ORIGIN CAROUSEL -->
+    <!-- ===================================================================== -->
+    <div id="rulesModal" class="modal-overlay hidden">
+      <div class="modal-content modal-large">
+        <div class="modal-header">
+          <h2><span class="gold-icon">📜</span> <span data-i18n="rules_modal_title">Rule Book: How to Play Pasha Palli</span></h2>
+          <button class="btn-close" data-close="rulesModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Carousel Slides -->
+          <div class="rules-carousel" id="rulesCarousel">
+            <!-- Slide 1: History -->
+            <div class="carousel-slide active" data-slide="0">
+              <div class="slide-badge">ORIGIN & CULTURAL HERITAGE</div>
+              <h3>The Ancient Epic Dice Race</h3>
+              <div class="book-quote">
+                <p><b>From "An Anthology of Native & Indigenous Sports of India" (CUTM, 2025):</b></p>
+                <p><i>"Pasha Palli is an ancient Indian indigenous board game, primarily a game of chance and strategy, played with dice and pawns on a cruciform board. It is widely recognized as the historic precursor to modern games like Ludo and Pachisi. Mentions of the game trace back thousands of years to ancient Indian texts, including the epic Mahabharata, where a game of dice (Pasha) plays a pivotal role."</i></p>
+              </div>
+              <p>In Odisha and across the subcontinent, Pasha Palli represents the quintessential dice-pit cross race. It is played on embroidered velvet cloth boards with deep crimson and emerald checked arms.</p>
+            </div>
+
+            <!-- Slide 2: Rules & Movement -->
+            <div class="carousel-slide" data-slide="1">
+              <div class="slide-badge">BOARD GEOMETRY & TRAVERSAL</div>
+              <h3>Cruciform Board & Counter-Clockwise Track</h3>
+              <ul class="rule-bullets">
+                <li><b>Setup:</b> Each player controls 4 Gottis starting in their designated corner base dock.</li>
+                <li><b>Entering Play:</b> A roll of <b>1, 6, or Doubles</b> releases a Gotti from the starting dock onto step 0 of your home arm.</li>
+                <li><b>Traversal Path:</b> Gottis travel down the center column, loop counter-clockwise around the outer perimeter of all four arms, and finally travel up the center home column into the central <b>Charkoni 'C'</b>.</li>
+                <li><b>Exact Roll to Finish:</b> A Gotti must reach the central 'C' by an <i>exact</i> count. Overshooting is invalid.</li>
+              </ul>
+            </div>
+
+            <!-- Slide 3: Combat, Safe Havens & Blocks -->
+            <div class="carousel-slide" data-slide="2">
+              <div class="slide-badge">TACTICS & DEFENSE</div>
+              <h3>Captures, Safe Castles & Defensive Pairs</h3>
+              <ul class="rule-bullets">
+                <li><b>Capturing:</b> Landing on an opponent's single pawn sends it back to its starting base dock and immediately awards you an <b>Extra Turn</b>!</li>
+                <li><b>Safe Castle Havens (X):</b> Cells marked with stitched golden <b>'X'</b> marks are fortified castles. Pawns here are immune to capture and multiple players can safely share the tile.</li>
+                <li><b>Defensive Pairs / Blocks:</b> When two of your pawns occupy the same non-safe square, they form an impenetrable <b>Pair Block</b>. Opponents cannot capture them and cannot pass over them!</li>
+                <li><b>Doubles:</b> Rolling matching faces on the Pasas awards a bonus throw.</li>
+              </ul>
+            </div>
+
+            <!-- Slide 4: Victory -->
+            <div class="carousel-slide" data-slide="3">
+              <div class="slide-badge">VICTORY CONDITIONS</div>
+              <h3>Winning the Match & Ranked Finishes</h3>
+              <p>The first player to guide all 4 of their Gottis into the central <b>Charkoni 'C'</b> wins the match!</p>
+              <p>In 3 and 4-player matches, play continues to determine 2nd, 3rd, and 4th place ranks.</p>
+            </div>
+
+            <!-- Slide 5: Dual Controls (Mouse & Keyboard) -->
+            <div class="carousel-slide" data-slide="4">
+              <div class="slide-badge">INPUT & CONTROLS (§8 SPECIFICATION)</div>
+              <h3>Mouse & Keyboard Controls (Dual Support)</h3>
+              <ul class="rule-bullets">
+                <li><b>🖱️ Mouse:</b> Click the <b>THROW PASAS</b> button or the dice tray directly to roll. Click any glowing Gotti to preview its path and destination. Click the highlighted target cell, click the Gotti again, or click <b>Confirm Move</b> to advance. Click outside to deselect.</li>
+                <li><b>⌨️ Keyboard:</b>
+                  <br>• <kbd>Space</kbd> or <kbd>Enter</kbd>: Throw Pasas / Confirm selected move
+                  <br>• <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd>, <kbd>4</kbd>: Select Gotti #1 through #4 directly
+                  <br>• <kbd>Tab</kbd> / <kbd>Arrow Keys</kbd> / <kbd>WASD</kbd>: Cycle between eligible Gottis
+                  <br>• <kbd>Esc</kbd>: Cancel move preview or Pause game
+                  <br>• <kbd>Backspace</kbd>: Cancel preview or Undo last move
+                  <br>• <kbd>H</kbd>: Strategic AI Hint | <kbd>U</kbd>: Casual Move Undo
+                  <br>• <kbd>M</kbd>: Toggle Audio Mute | <kbd>R</kbd>: Reset Board
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <div class="carousel-nav">
+            <button id="btnPrevSlide" class="btn-secondary">◀ <span data-i18n="previous">Previous</span></button>
+            <div class="carousel-dots" id="carouselDots">
+              <span class="dot active" data-dot="0"></span>
+              <span class="dot" data-dot="1"></span>
+              <span class="dot" data-dot="2"></span>
+              <span class="dot" data-dot="3"></span>
+              <span class="dot" data-dot="4"></span>
+            </div>
+            <div class="carousel-action-group">
+              <button id="btnNextSlide" class="btn-secondary"><span data-i18n="next">Next</span> ▶</button>
+              <button id="btnStartFromRules" class="btn-primary-action btn-rules-start" data-close="rulesModal">
+                <span>⚔️</span> <span data-i18n="enter_court">Start Match</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===================================================================== -->
+    <!-- MODAL 3: SETTINGS & LOCALIZATION MODAL -->
+    <!-- ===================================================================== -->
+    <div id="settingsModal" class="modal-overlay hidden">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2><span class="gold-icon">🎨</span> <span data-i18n="settings_title">Settings & Accessibility</span></h2>
+          <button class="btn-close" data-close="settingsModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <!-- Language Selector (§6, §7, §10: English, Hindi, Odia) -->
+          <div class="setup-field">
+            <label class="setup-label" data-i18n="language_label">Language / भाषा / ଭାଷା (§6 Specification):</label>
+            <div class="radio-pill-group" id="langSelector">
+              <label class="radio-pill">
+                <input type="radio" name="gameLang" value="en" checked>
+                <span>English</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="gameLang" value="hi">
+                <span>हिन्दी (Hindi)</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="gameLang" value="od">
+                <span>ଓଡ଼ିଆ (Odia)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Display Theme Mode Selector -->
+          <div class="setup-field">
+            <label class="setup-label">Display Theme / दृश्य थीम:</label>
+            <div class="radio-pill-group" id="settingsThemeSelector">
+              <label class="radio-pill">
+                <input type="radio" name="settingsTheme" value="dark" checked>
+                <span>🌙 Dark (Royal Night)</span>
+              </label>
+              <label class="radio-pill">
+                <input type="radio" name="settingsTheme" value="light">
+                <span>☀️ Light (Palace Court)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Color-Blind Symbols Toggle -->
+          <div class="setup-field">
+            <label class="setup-label" data-i18n="accessibility_label">Accessibility & Visual Aids:</label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkColorBlind" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-text" data-i18n="color_blind_text">Display Cultural Symbol Glyphs on Gottis (☀️, 🪷, 🌙, ⚡)</span>
+            </label>
+          </div>
+
+          <!-- Sound Effects Toggle -->
+          <div class="setup-field">
+            <label class="setup-label" data-i18n="audio_sfx_label">Audio & Sound FX (Web Audio API):</label>
+            <label class="toggle-control">
+              <input type="checkbox" id="chkSoundEffects" checked>
+              <span class="toggle-slider"></span>
+              <span class="toggle-text" data-i18n="sound_sfx_text">Enable Procedural Sound Effects (Dice, Hop, Capture, Fanfare)</span>
+            </label>
+          </div>
+
+          <!-- Animation Speed Slider -->
+          <div class="setup-field">
+            <label class="setup-label" data-i18n="anim_speed_label">Pawn Movement Speed:</label>
+            <input type="range" id="rngMoveSpeed" min="60" max="220" value="120" class="speed-slider">
+            <div class="slider-labels">
+              <span>Fast (60ms)</span>
+              <span>Default (120ms)</span>
+              <span>Cinematic (220ms)</span>
+            </div>
+          </div>
+
+          <div class="modal-footer-actions">
+            <button class="btn-primary-action" data-close="settingsModal"><span data-i18n="save_and_close">Save & Close</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL: PLAYER PROFILES & ROSTER CUSTOMIZATION -->
+    <!-- ===================================================================== -->
+    <div id="profileModal" class="modal-overlay hidden">
+      <div class="modal-content modal-large modal-profiles">
+        <div class="modal-header">
+          <h2><span class="gold-icon">👤</span> <span data-i18n="profile_modal_title">Player Profiles & Roster Setup</span></h2>
+          <button class="btn-close" data-close="profileModal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p class="profile-modal-intro">
+            Customize player names, epic royal titles, avatars, and controller options (Human vs AI bots with custom playstyles).
+          </p>
+
+          <!-- Player Tabs -->
+          <div class="profile-tabs" id="profileTabs">
+            <button class="profile-tab-btn active" data-tab="0" type="button">
+              <span class="tab-dot" style="background:#d82538"></span>
+              <span class="tab-name" id="tabLabel0">South (P1)</span>
+            </button>
+            <button class="profile-tab-btn" data-tab="1" type="button">
+              <span class="tab-dot" style="background:#278d46"></span>
+              <span class="tab-name" id="tabLabel1">West (P2)</span>
+            </button>
+            <button class="profile-tab-btn" data-tab="2" type="button">
+              <span class="tab-dot" style="background:#e5b222"></span>
+              <span class="tab-name" id="tabLabel2">North (P3)</span>
+            </button>
+            <button class="profile-tab-btn" data-tab="3" type="button">
+              <span class="tab-dot" style="background:#227de5"></span>
+              <span class="tab-name" id="tabLabel3">East (P4)</span>
+            </button>
+            <button class="profile-tab-btn" data-tab="all" type="button">
+              <span class="tab-name">👥 All Players</span>
+            </button>
+          </div>
+
+          <!-- Cards Container -->
+          <div class="profile-cards-container" id="profileCardsContainer"></div>
+        </div>
+        <div class="modal-footer-actions">
+          <button id="btnResetProfilesDefault" type="button" class="btn-secondary">↺ Reset Defaults</button>
+          <button id="btnApplyProfiles" type="button" class="btn-primary-action">✓ Save & Apply Profiles</button>
+          <button class="btn-secondary" type="button" data-close="profileModal"><span data-i18n="close">Close</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 6: PAUSE MODAL -->
+    <!-- ===================================================================== -->
+    <div id="pauseModal" class="modal-overlay hidden">
+      <div class="modal-content modal-sm">
+        <div class="modal-header">
+          <h2><span class="gold-icon">⏸</span> <span data-i18n="game_paused">Match Paused</span></h2>
+          <button class="btn-close" data-close="pauseModal">&times;</button>
+        </div>
+        <div class="modal-body text-center">
+          <p style="margin-bottom: 20px; color: var(--text-muted);" data-i18n="pause_desc">Take your time. The match state is preserved.</p>
+          <div class="pause-actions-list">
+            <button id="btnResumeGame" class="btn-primary-action btn-full"><span data-i18n="resume_game">Resume Match</span></button>
+            <button id="btnOpenProfilesFromPause" class="btn-secondary btn-full">👤 <span>Player Profiles</span></button>
+            <button id="btnRestartFromPause" class="btn-secondary btn-full"><span data-i18n="restart_match">Restart Match</span></button>
+            <button id="btnOpenSetupFromPause" class="btn-secondary btn-full"><span data-i18n="match_settings">Match Settings</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 7: VICTORY & MATCH RESULTS MODAL -->
+    <!-- ===================================================================== -->
+    <div id="victoryModal" class="modal-overlay hidden">
+      <div class="modal-content victory-content modal-victory">
+        <canvas id="victoryConfettiCanvas" class="victory-confetti-canvas"></canvas>
+        <button class="btn-close victory-close-btn" data-close="victoryModal" title="Close">&times;</button>
+        <div class="victory-header">
+          <div class="victory-crown">👑</div>
+          <div class="victory-royal-tag">ROYAL CHAMPIONSHIP OF PASHA PALLI</div>
+          <h2 id="victoryTitle">CRIMSON RED WINS!</h2>
+          <p class="victory-sub" id="victorySubtitle">All 4 Gottis successfully navigated the sacred cruciform track into the central Charkoni 'C' Home!</p>
+        </div>
+
+        <!-- Leaderboard: 1st Gold, 2nd Silver, 3rd Bronze, 4th Iron -->
+        <div class="leaderboard-section">
+          <div class="leaderboard-header-tag">
+            <span class="gold-icon">⚜</span>
+            <span>OFFICIAL MATCH LEADERBOARD</span>
+            <span class="gold-icon">⚜</span>
+          </div>
+
+          <!-- Podium / Leaderboard Grid: 1st Gold, 2nd Silver, 3rd Bronze, 4th Iron -->
+          <div class="podium-grid" id="podiumGrid">
+            <!-- Populated dynamically in JS with Gold, Silver, Bronze, Iron tiers -->
+          </div>
+        </div>
+
+        <div class="match-stats-box">
+          <div class="stat-item">
+            <span class="stat-icon">🔄</span>
+            <span class="stat-label">Total Turns</span>
+            <span class="stat-val" id="statTotalTurns">42</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⚔️</span>
+            <span class="stat-label">Captures Made</span>
+            <span class="stat-val" id="statTotalCaptures">5</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">🎲</span>
+            <span class="stat-label">Doubles Thrown</span>
+            <span class="stat-val" id="statTotalDoubles">7</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-icon">⏳</span>
+            <span class="stat-label">Match Duration</span>
+            <span class="stat-val" id="statMatchDuration">3m 24s</span>
+          </div>
+        </div>
+
+        <div class="modal-footer-actions victory-footer-actions">
+          <button id="btnPlayAgain" class="btn-primary-action btn-victory-play">
+            <span>🔄</span> <span data-i18n="play_again">Play Again</span>
+          </button>
+          <button id="btnVictoryToTitle" class="btn-secondary">
+            <span>🏰</span> <span>Title Screen</span>
+          </button>
+          <button id="btnCloseVictory" class="btn-secondary" data-close="victoryModal">
+            <span>🔍</span> <span data-i18n="inspect_board">Inspect Final Board</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Audio Context Bootstrap & Application Logic -->
+  <script src="preview.js"></script>
+
+  <!-- Service Worker Registration for Offline & PWA Support -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((reg) => console.log('Pasha Palli SW registered:', reg.scope))
+          .catch((err) => console.warn('Pasha Palli SW registration failed:', err));
+      });
+    }
+  </script>
+</body>
+</html>
