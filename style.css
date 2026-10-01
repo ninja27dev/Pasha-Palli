@@ -66,6 +66,23 @@ button, a, select, input, .btn-primary-action, .btn-secondary, .dice-box, .pawn-
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.app-official-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 10px var(--gold-glow));
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-group:hover .app-official-logo {
+  transform: scale(1.1) rotate(2deg);
+  filter: drop-shadow(0 0 16px rgba(240, 195, 69, 0.85));
 }
 
 .gold-icon {
@@ -2210,21 +2227,78 @@ body.hide-symbols .pawn-sym-badge {
 }
 
 .loading-seal {
-  width: 66px;
-  height: 66px;
-  background: radial-gradient(circle, #f0c345 0%, #a67414 100%);
+  width: 74px;
+  height: 74px;
+  background: transparent;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 28px rgba(240, 195, 69, 0.65);
+  box-shadow: 0 0 32px rgba(240, 195, 69, 0.7);
   z-index: 3;
+}
+
+.official-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 12px rgba(240, 195, 69, 0.6));
+  animation: logoGentleFloat 4s ease-in-out infinite;
+}
+
+@keyframes logoGentleFloat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .seal-icon {
   font-size: 32px;
   color: #17111d;
   line-height: 1;
+}
+
+.modal-header-logo {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  border-radius: 5px;
+  filter: drop-shadow(0 0 6px var(--gold-glow));
+  margin-right: 8px;
+}
+
+.victory-official-logo {
+  width: 86px;
+  height: 86px;
+  margin: 0 auto 12px;
+  display: block;
+  border-radius: 18px;
+  filter: drop-shadow(0 0 24px var(--gold-glow));
+  animation: victoryLogoPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes victoryLogoPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 18px var(--gold-glow)); }
+  50% { transform: scale(1.06); filter: drop-shadow(0 0 32px rgba(240, 195, 69, 0.85)); }
+}
+
+.leaderboard-logo-badge {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  border-radius: 4px;
+  filter: drop-shadow(0 0 4px var(--gold-glow));
+}
+
+.mini-logo-seal {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+  border-radius: 3px;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px var(--gold-glow));
+  display: inline-block;
+  margin: 0 4px;
 }
 
 .loading-titles {

@@ -2885,6 +2885,13 @@ if (btnOpenTitleScreen) {
       if (statusText) statusText.textContent = 'Royal Court Ready!';
     }
   });
+
+  const topNavLogo = document.getElementById('topNavLogoGroup');
+  if (topNavLogo) {
+    topNavLogo.addEventListener('click', () => {
+      btnOpenTitleScreen.click();
+    });
+  }
 }
 
 // =============================================================================

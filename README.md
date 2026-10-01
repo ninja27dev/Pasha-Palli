@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Pasha Palli Banner](icons/icon.svg)
+<img src="icons/icon.svg" alt="Pasha Palli Official Logo" width="160">
 
 ### *Native & Indigenous Sports of India • Centurion University of Technology and Management (CUTM)*
 
